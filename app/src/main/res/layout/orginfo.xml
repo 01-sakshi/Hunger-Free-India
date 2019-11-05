@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/azur"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/procard"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="15dp"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="9dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/add"
+                        android:layout_width="match_parent"
+                        android:layout_height="56dp"
+                        android:layout_marginTop="24dp"
+                        android:text="Organisation !"
+                        android:textAlignment="center"
+                        android:textColor="#090808"
+                        android:textSize="32sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:background="@drawable/edit_text_design"
+                            android:orientation="horizontal"
+                            android:padding="4dp">
+
+                            <ImageView
+                                android:id="@+id/nameicon"
+                                android:layout_width="38dp"
+                                android:layout_height="38dp"
+                                app:srcCompat="@drawable/ic_person_black_24dp" />
+
+                            <EditText
+                                android:id="@+id/name"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="4dp"
+                                android:hint="name"
+                                android:inputType="textCapWords"
+                                android:singleLine="true"
+                                android:textAllCaps="true" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="8dp"
+                            android:background="@drawable/edit_text_design"
+                            android:orientation="horizontal"
+                            android:padding="4dp">
+
+                            <ImageView
+                                android:id="@+id/emailicon"
+                                android:layout_width="38dp"
+                                android:layout_height="38dp"
+                                app:srcCompat="@android:drawable/stat_sys_phone_call_on_hold" />
+
+
+                            <EditText
+                                android:id="@+id/phone"
+                                android:layout_width="match_parent"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="4dp"
+                                android:ems="10"
+                                android:hint="phone number"
+                                android:inputType="phone"
+                                android:textAllCaps="true" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/layout1"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:layout_margin="8dp"
+                            android:background="@drawable/edit_text_design"
+                            android:orientation="horizontal"
+                            android:padding="4dp">
+
+
+                            <ImageView
+                                android:id="@+id/genicon"
+                                android:layout_width="38dp"
+                                android:layout_height="38dp"
+                                app:srcCompat="@drawable/quant" />
+
+                            <EditText
+                                android:id="@+id/qty"
+                                android:layout_width="293dp"
+                                android:layout_height="40dp"
+                                android:layout_marginLeft="4dp"
+                                android:hint="Quantity"
+                                android:singleLine="true"
+                                android:textAllCaps="true" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/layout7"
+                            android:layout_width="match_parent"
+                            android:layout_height="250dp"
+                            android:layout_margin="8dp"
+                            android:background="@drawable/edit_text_design"
+                            android:orientation="vertical"
+                            android:padding="4dp">
+
+                            <TextView
+                                android:id="@+id/select"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="Select Restaurant"
+                                android:textSize="14sp"
+                                android:textStyle="bold" />
+
+                            <CheckBox
+                                android:id="@+id/c1"
+                                android:layout_width="120dp"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:text="Ramada Encore" />
+
+                            <CheckBox
+                                android:id="@+id/c2"
+                                android:layout_width="120dp"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:text="Sarovar Portico" />
+
+                            <CheckBox
+                                android:id="@+id/c3"
+                                android:layout_width="120dp"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:text="Chatter Box" />
+
+                            <CheckBox
+                                android:id="@+id/c4"
+                                android:layout_width="120dp"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:text="AB ClarksInn" />
+
+                            <CheckBox
+                                android:id="@+id/c5"
+                                android:layout_width="120dp"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:text="Chick Chick Restaurant" />
+
+                            <CheckBox
+                                android:id="@+id/c6"
+                                android:layout_width="120dp"
+                                android:layout_height="50dp"
+                                android:layout_weight="1"
+                                android:text="Pirates of Grill" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layout4"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/edit_text_design"
+                        android:orientation="horizontal"
+                        android:padding="4dp">
+
+                        <ImageView
+                            android:id="@+id/locicon1"
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            app:srcCompat="@drawable/time" />
+
+                        <EditText
+                            android:id="@+id/time"
+                            android:layout_width="212dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="4dp"
+                            android:hint="Time of Pick-up"
+                            android:singleLine="true"
+                            android:textAllCaps="true"
+                            tools:text="@tools:sample/date/hhmmss" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layout5"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/edit_text_design"
+                        android:orientation="horizontal"
+                        android:padding="4dp">
+
+                        <ImageView
+                            android:id="@+id/locicon2"
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            app:srcCompat="@drawable/ic_location_on_black_24dp" />
+
+                        <EditText
+                            android:id="@+id/loc"
+                            android:layout_width="212dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="4dp"
+                            android:hint="Location"
+                            android:singleLine="true"
+                            android:textAllCaps="true" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layout2"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:layout_margin="8dp"
+                        android:background="@drawable/edit_text_design"
+                        android:orientation="horizontal"
+                        android:padding="4dp">
+
+                        <ImageView
+                            android:id="@+id/locicon3"
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            app:srcCompat="@drawable/city" />
+
+                        <EditText
+                            android:id="@+id/city"
+                            android:layout_width="212dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="4dp"
+                            android:hint="City"
+                            android:singleLine="true"
+                            android:textAllCaps="true" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/proceed"
+                        android:layout_width="170dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="center"
+                        android:layout_margin="8dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@drawable/custom_button"
+                        android:padding="4dp"
+                        android:text="Proceed"
+                        android:textAllCaps="false"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

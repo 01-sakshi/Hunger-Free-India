@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "668589010074",
+    "firebase_url": "https://hungerfree-996f1.firebaseio.com",
+    "project_id": "hungerfree-996f1",
+    "storage_bucket": "hungerfree-996f1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668589010074:android:ead153f196e705e2dc0323",
+        "android_client_info": {
+          "package_name": "com.e.hungerfreeapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "668589010074-jdkgqcsq1b0l7bqls2mjjo0aq210g3j8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfKWkH899Tj6Aj3F8m5JBjUj0zrc8vL4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "668589010074-jdkgqcsq1b0l7bqls2mjjo0aq210g3j8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:668589010074:android:579b3b64a9af603adc0323",
+        "android_client_info": {
+          "package_name": "jalandhar.sakshiaggarwal.hungerfreeindia"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "668589010074-jdkgqcsq1b0l7bqls2mjjo0aq210g3j8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBfKWkH899Tj6Aj3F8m5JBjUj0zrc8vL4M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "668589010074-jdkgqcsq1b0l7bqls2mjjo0aq210g3j8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
