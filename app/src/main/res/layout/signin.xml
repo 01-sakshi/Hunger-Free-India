@@ -52,16 +52,16 @@
                     android:id="@+id/nameicon"
                     android:layout_width="38dp"
                     android:layout_height="38dp"
-                    app:srcCompat="@android:drawable/stat_sys_phone_call_on_hold" />
+                    app:srcCompat="@drawable/ic_markunread_black_24dp" />
 
                 <EditText
-                    android:id="@+id/phone"
+                    android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginLeft="4dp"
                     android:ems="10"
-                    android:hint="phone"
-                    android:inputType="phone"
+                    android:hint="Email Address"
+                    android:inputType="textEmailAddress"
                     android:singleLine="true"
                     android:textAllCaps="true" />
             </LinearLayout>
@@ -78,16 +78,15 @@
                     android:id="@+id/emailicon"
                     android:layout_width="38dp"
                     android:layout_height="38dp"
-                    app:srcCompat="@drawable/ic_markunread_black_24dp" />
+                    app:srcCompat="@drawable/password" />
 
 
                 <EditText
-                    android:id="@+id/otp"
+                    android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
                     android:layout_marginLeft="4dp"
-                    android:hint="otp"
-                    android:inputType="number"
+                    android:hint="Password"
                     android:textAllCaps="true" />
             </LinearLayout>
 

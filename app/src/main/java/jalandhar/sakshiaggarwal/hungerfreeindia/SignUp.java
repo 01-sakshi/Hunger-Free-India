@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -18,33 +20,45 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class SignUp extends AppCompatActivity {
+public class SignUp extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     CardView procard;
-    TextView add;
+    TextView add,profile,edetails;
     EditText name,phone,address,state,city,email,pass,cpass;
     Button save;
     Spinner spinner1;
-    FirebaseAuth firebaseAuth;
-    String emaill,passs,addresss,cpasss,cityy,phonee,statee;
-    DatabaseReference dbr;
-    Rest rest;
+    //FirebaseAuth firebaseAuth;
+    String emaill,passs,addresss,cpasss,cityy,phonee,statee,name1;
+    String text;
+    //DatabaseReference dbr;
+    //Rest rest;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        FirebaseApp.initializeApp(this);
         setContentView(R.layout.signup);
         add=findViewById(R.id.add);
+        profile=findViewById(R.id.profile);
+        edetails=findViewById(R.id.edetails);
         Typeface aller=Typeface.createFromAsset(getAssets(),"Aller_Bd.ttf");
         add.setTypeface(aller);
-        spinner1=findViewById(R.id.spinner1);
+        profile.setTypeface(aller);
+        edetails.setTypeface(aller);
 
-        dbr= FirebaseDatabase.getInstance().getReference("rest");
-        rest=new Rest();
+        spinner1=findViewById(R.id.spinner1);
+        ArrayAdapter<CharSequence> adapter=ArrayAdapter.createFromResource(this,R.array.choose_array,android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner1.setAdapter(adapter);
+        spinner1.setOnItemSelectedListener(this);
+
+        //dbr= FirebaseDatabase.getInstance().getReference("rest");
+       // rest=new Rest();
 
         procard=findViewById(R.id.procard);
         name=findViewById(R.id.name);
@@ -56,10 +70,12 @@ public class SignUp extends AppCompatActivity {
         email=findViewById(R.id.email);
         pass=findViewById(R.id.pass);
         cpass=findViewById(R.id.cpass);
+
         save.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
+            public void onClick(View view)
+            {
+                name1=name.getText().toString().trim();
                 emaill = email.getText().toString().trim();
                 passs = pass.getText().toString().trim();
                 phonee = phone.getText().toString().trim();
@@ -68,14 +84,52 @@ public class SignUp extends AppCompatActivity {
                 cityy = city.getText().toString().trim();
                 cpasss = cpass.getText().toString().trim();
 
-                registerUser();
-                registerInFirebase();
-                startActivity(new Intent(SignUp.this,RestInfo.class));
+                //registerUser();
+                //registerInFirebase();
+                if (!isValidName(name1))
+                {
+                    name.setError("Enter valid Name");
+                }
+                else if (!isValidPhone(phonee)) {
 
+                    phone.setError("Enter valid Phone Number");
+                }
+                else if (!isValidAddress(addresss)) {
+
+                    address.setError("Enter valid Address");
+                }
+                else if (!isValidState(statee)) {
+
+                    state.setError("Enter valid State");
+                }
+                else if (!isValidCity(cityy)) {
+
+                    city.setError("Enter valid City");
+                }
+                else if (!isValidEmail(emaill)) {
+
+                    email.setError("Enter valid Email");
+                }
+                else if (!isValidPass(passs)) {
+
+                    pass.setError("Enter Password");
+                }
+                else if (!isValidCpass(cpasss)) {
+
+                    cpass.setError("Confirm Password");
+                }
+                else{
+                    if(text.equals("Restaurant")){
+                        startActivity(new Intent(SignUp.this,RestInfo.class));
+                    }
+                    else if(text.equals("Outlet")){
+                        startActivity(new Intent(SignUp.this,OrgInfo.class));
+                    }
+                }
             }
         });
     }
-    void registerUser(){
+    /*void registerUser(){
 
        // progressDialog.show();
 
@@ -100,13 +154,63 @@ public class SignUp extends AppCompatActivity {
               //  progressDialog.dismiss();
             }
         });
-    }
+    }*/
 
-    void registerInFirebase(){
+   /* void registerInFirebase(){
 
         String idDatabaser = dbr.push().getKey();
         rest.id = idDatabaser;
         dbr.child(idDatabaser).setValue(rest);
         Toast.makeText(this, "Rest Added Successfully!!", Toast.LENGTH_LONG).show();
+    }*/
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        text=adapterView.getItemAtPosition(i).toString();
     }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+
+    }
+    private boolean isValidName(String name1) {
+        if (!name1.equals("") ) {
+            return true;
+        }
+        return false; }
+    private boolean isValidPhone(String phone1) {
+        if (!phone1.equals("") ) {
+            return true;
+        }
+        return false; }
+    private boolean isValidAddress(String address1) {
+        if (!address1.equals("") ) {
+            return true;
+        }
+        return false; }
+    private boolean isValidCity(String city1) {
+        if (!city1.equals("") ) {
+            return true;
+        }
+        return false; }
+    private boolean isValidState(String state1) {
+        if (!state1.equals("") ) {
+            return true;
+        }
+        return false; }
+    private boolean isValidEmail(String email1) {
+        if (!email1.equals("") ) {
+            return true;
+        }
+        return false; }
+    private boolean isValidPass(String pass1) {
+        if (!pass1.equals("") ) {
+            return true;
+        }
+        return false; }
+    private boolean isValidCpass(String cpass1) {
+        if (!cpass1.equals("") ) {
+            return true;
+        }
+        return false; }
 }
