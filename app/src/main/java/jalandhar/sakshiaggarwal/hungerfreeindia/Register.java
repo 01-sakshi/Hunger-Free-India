@@ -7,6 +7,9 @@ public class Register {
     public String state;
     public String city;
     public String phone;
+    public String email;
+    public String pass;
+    public String id;
 
     public Register()
     {

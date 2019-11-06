@@ -18,13 +18,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".HomeActivity"/>
-        <activity android:name=".RestInfo"/>
         <activity android:name=".SignUp"/>
-        <activity android:name=".OrgInfo"/>
+        <activity android:name=".OrgDetails"/>
+        <activity android:name=".RestInfo"/>
         <activity android:name=".MainRestActivity"/>
-        <activity android:name=".Otp"/>
+        <activity android:name=".OrgInfo"/>
         <activity android:name=".SignIn"/>
         <activity android:name=".Admin"/>
+        <activity android:name=".myphnotpsend"/>
+        <activity android:name=".RestDetails"/>
+        <activity android:name=".ListRest"/>
+        <activity android:name=".ListOrg"/>
 
     </application>
 

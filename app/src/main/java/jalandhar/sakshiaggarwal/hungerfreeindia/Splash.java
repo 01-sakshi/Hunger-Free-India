@@ -11,6 +11,7 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splashscreen);
+        getSupportActionBar().hide();
 
         int SPLASH_DISPLAY_LENGTH = 1000;
         new Handler().postDelayed(new Runnable(){

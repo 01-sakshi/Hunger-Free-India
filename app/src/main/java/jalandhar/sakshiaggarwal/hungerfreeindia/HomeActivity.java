@@ -12,15 +12,15 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.homeactivity);
-        cardclass6th=findViewById(R.id.cardclass6th);
+        /*setContentView(R.layout.restdetails);
+        //cardclass6th=findViewById(R.id.cardclass6th);
         cardclass7th=findViewById(R.id.cardclass7th);
         cardclass6th.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(HomeActivity.this, SignUp.class));
             }
-        });
+        });*/
         /*cardclass7th.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

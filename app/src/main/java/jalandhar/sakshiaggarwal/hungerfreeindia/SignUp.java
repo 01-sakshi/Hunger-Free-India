@@ -1,5 +1,6 @@
 package jalandhar.sakshiaggarwal.hungerfreeindia;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -32,16 +33,18 @@ public class SignUp extends AppCompatActivity implements AdapterView.OnItemSelec
     EditText name,phone,address,state,city,email,pass,cpass;
     Button save;
     Spinner spinner1;
-    //FirebaseAuth firebaseAuth;
+    FirebaseAuth firebaseAuth;
     String emaill,passs,addresss,cpasss,cityy,phonee,statee,name1;
     String text;
-    //DatabaseReference dbr;
-    //Rest rest;
+    DatabaseReference db;
+    Register register;
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         FirebaseApp.initializeApp(this);
+        initViews();
         setContentView(R.layout.signup);
         add=findViewById(R.id.add);
         profile=findViewById(R.id.profile);
@@ -75,18 +78,20 @@ public class SignUp extends AppCompatActivity implements AdapterView.OnItemSelec
             @Override
             public void onClick(View view)
             {
-                name1=name.getText().toString().trim();
-                emaill = email.getText().toString().trim();
-                passs = pass.getText().toString().trim();
-                phonee = phone.getText().toString().trim();
-                addresss = address.getText().toString().trim();
-                statee = state.getText().toString().trim();
-                cityy = city.getText().toString().trim();
-                cpasss = cpass.getText().toString().trim();
 
-                //registerUser();
-                //registerInFirebase();
-                if (!isValidName(name1))
+                register.email = email.getText().toString().trim();
+                register.name = name.getText().toString().trim();
+                register.pass = pass.getText().toString().trim();
+                register.phone = phone.getText().toString().trim();
+                register.address = address.getText().toString().trim();
+                register.state = state.getText().toString().trim();
+                register.city = city.getText().toString().trim();
+                cpasss = cpass.getText().toString().trim();
+                phonee=register.phone;
+                Intent intent=new Intent();
+                //intent.putExtra("phoneno",phonee);
+
+                /*if (!isValidName(name1))
                 {
                     name.setError("Enter valid Name");
                 }
@@ -125,44 +130,14 @@ public class SignUp extends AppCompatActivity implements AdapterView.OnItemSelec
                     else if(text.equals("Outlet")){
                         startActivity(new Intent(SignUp.this,OrgInfo.class));
                     }
-                }
+                }*/
+
+                registerUser();
+                registerInFirebase();
+                startActivity(new Intent(SignUp.this,myphnotpsend.class));
             }
         });
     }
-    /*void registerUser(){
-
-       // progressDialog.show();
-
-
-        firebaseAuth.createUserWithEmailAndPassword(emaill,passs).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Toast.makeText(SignUp.this,email+" Registered Successful!!",Toast.LENGTH_LONG).show();
-                    String uid = task.getResult().getUser().getUid();
-                    Log.i("User","User's id "+uid);
-                   // progressDialog.dismiss();
-                }
-
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-
-                Log.i("User","registration Unsuccessful!! "+e.getMessage());
-                e.printStackTrace();
-              //  progressDialog.dismiss();
-            }
-        });
-    }*/
-
-   /* void registerInFirebase(){
-
-        String idDatabaser = dbr.push().getKey();
-        rest.id = idDatabaser;
-        dbr.child(idDatabaser).setValue(rest);
-        Toast.makeText(this, "Rest Added Successfully!!", Toast.LENGTH_LONG).show();
-    }*/
 
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -213,4 +188,47 @@ public class SignUp extends AppCompatActivity implements AdapterView.OnItemSelec
             return true;
         }
         return false; }
+
+
+    void initViews() {
+        register = new Register();
+
+        firebaseAuth = FirebaseAuth.getInstance();
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Please Wait...");
+        progressDialog.setCancelable(false);
+        db = FirebaseDatabase.getInstance().getReference("register");
+    }
+
+    void registerUser() {
+
+        progressDialog.show();
+        firebaseAuth.createUserWithEmailAndPassword(register.email, register.pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(SignUp.this, email + " Registered Successful!!", Toast.LENGTH_LONG).show();
+                    String uid = task.getResult().getUser().getUid();
+                    Log.i("User", "User's id " + uid);
+                    progressDialog.dismiss();
+                }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+                Log.i("User", "Registration Unsuccessful!! " + e.getMessage());
+                e.printStackTrace();
+                progressDialog.dismiss();
+            }
+        });
+    }
+
+    void registerInFirebase(){
+
+        String idDatabase = db.push().getKey();
+        register.id = idDatabase;
+        db.child(idDatabase).setValue(register);
+        Toast.makeText(this, "Registered Successfully!!", Toast.LENGTH_LONG).show();
+    }
 }
